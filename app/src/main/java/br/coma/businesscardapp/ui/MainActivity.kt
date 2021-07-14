@@ -1,9 +1,11 @@
 package br.coma.businesscardapp.ui
 
+
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import br.coma.businesscardapp.R
-import br.coma.businesscardapp.databinding.ActivityMainBinding
+
+import br.coma.businesscardapp.databinding.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,5 +14,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        insertListenners()
+    }
+
+    private fun insertListenners(){
+        binding.actionBtnAddVisitCard.setOnClickListener{
+            val intent = Intent(this@MainActivity,AddBusinessCardActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
