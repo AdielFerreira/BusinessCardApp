@@ -1,28 +1,63 @@
 package br.coma.businesscardapp.ui
 
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.Spinner
+import android.widget.*
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import br.coma.businesscardapp.App
 import br.coma.businesscardapp.R
-
+import br.coma.businesscardapp.data.BusinessCard
+import br.coma.businesscardapp.databinding.ActivityAddBusinessCardBinding
 
 
 class AddBusinessCardActivity : AppCompatActivity() {
+
+    private lateinit var spinnerColor:Spinner
+    private val binding by lazy { ActivityAddBusinessCardBinding.inflate(layoutInflater) }
+    private val mainViewModel: MainViewModel by viewModels{
+        MainViewModelFactory((application as App).repository)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_business_card)
+        setContentView(binding.root)
         insertListenners()
     }
 
     private fun insertListenners() {
-        findViewById<ImageButton>(R.id.btn_close).setOnClickListener {
-            this.finish()
+
+        spinnerColor = findViewById(R.id.spinner_color)
+
+        val arraySpinner = resources.getStringArray(R.array.color_list)
+        val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item,arraySpinner)
+
+        spinnerColor.adapter = arrayAdapter
+
+        binding.btnClose.setOnClickListener {
+            finish()
+        }
+        binding.btnConfirmar.setOnClickListener {
+           val bCard = BusinessCard(
+               name = binding.tilName.editText?.text.toString(),
+               phone = binding.tilPhone.editText?.text.toString(),
+               company = binding.tilCompanyName.editText?.text.toString(),
+               email = binding.tilEmail.editText?.text.toString(),
+               background = select_color(binding.spinnerColor.selectedItem.toString())
+           )
+            mainViewModel.insert(bCard)
+            Toast.makeText(this,"Cartao adicionado",Toast.LENGTH_LONG).show()
+            finish()
+        }
+
+    }
+
+    private fun select_color(string: String): String {
+        if(string == "Amarelo"){
+            return "#FFFF00"
+        }else{
+            return "#A64682"
         }
     }
 }
+

@@ -7,4 +7,14 @@
     <string name="label_email">e-mail</string>
     <string name="label_company_name">Nome da Empresa</string>
     <string name="confirmation">CONFIRMAR</string>
+
+    <string-array name="color_list">
+        <item>Cinza</item>
+        <item>Branco</item>
+        <item>Azul</item>
+        <item>Rosa</item>
+        <item>Vermelho</item>
+        <item>Amarelo</item>
+    </string-array>
 </resources>
+

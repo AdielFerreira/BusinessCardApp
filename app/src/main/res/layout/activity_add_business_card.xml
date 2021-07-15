@@ -95,6 +95,19 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Spinner
+        android:transitionName="cor"
+        android:id="@+id/spinner_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_company_name"
+        tools:ignore="MissingConstraints">
+    </Spinner>
+
     <Button
         android:id="@+id/btn_confirmar"
         android:layout_width="match_parent"
@@ -103,6 +116,6 @@
         android:text="@string/confirmation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_company_name"/>
+        app:layout_constraintTop_toBottomOf="@id/spinner_color"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
