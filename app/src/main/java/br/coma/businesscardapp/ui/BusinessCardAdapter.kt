@@ -39,7 +39,7 @@ class BusinessCardAdapter
             binding.cardViewTvPhone.text = item.phone
             binding.cardViewTvCompanyName.text = item.company
             binding.cardViewTvEmail.text = item.company
-            binding.itemCardViewBusinessCard.setBackgroundColor(Color.parseColor(item.background))
+            binding.itemCardViewBusinessCard.setCardBackgroundColor(Color.parseColor(item.background))
             binding.itemCardViewBusinessCard.setOnClickListener{
                 listennerShare(it)
             }

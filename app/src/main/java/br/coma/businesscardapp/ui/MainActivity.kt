@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import br.coma.businesscardapp.App
 
 import br.coma.businesscardapp.databinding.*
+import br.coma.businesscardapp.util.Image
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +31,11 @@ class MainActivity : AppCompatActivity() {
         binding.actionBtnAddVisitCard.setOnClickListener{
             val intent = Intent(this@MainActivity,AddBusinessCardActivity::class.java)
             startActivity(intent)
+        }
+
+        adapter.listennerShare ={ card->
+            Image.share(this@MainActivity, card)
+
         }
     }
 

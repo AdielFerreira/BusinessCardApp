@@ -53,10 +53,14 @@ class AddBusinessCardActivity : AppCompatActivity() {
     }
 
     private fun select_color(string: String): String {
-        if(string == "Amarelo"){
-            return "#FFFF00"
-        }else{
-            return "#A64682"
+        when(string){
+            "Amarelo"-> return "#FFFF00"
+            "Cinza" -> return "#B6B6B6"
+            "Branco" -> return "#000000"
+            "Azul" -> return "#205375"
+            "Rosa" -> return "#A64682"
+            "Vermelho" -> return "#C31717"
+            else -> return "#B6B6B6"
         }
     }
 }
